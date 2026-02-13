@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sales_agent_db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:alpine
+    container_name: sales_agent_redis
+    ports:
+      - "6379:6379"
+volumes:
+  postgres_data:

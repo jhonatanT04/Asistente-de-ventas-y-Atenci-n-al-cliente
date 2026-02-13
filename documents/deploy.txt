@@ -1,0 +1,5 @@
+gcloud compute ssh sales-ai-app --zone=us-central1-a
+
+
+cd ~/app
+sudo docker-compose logs -f backend

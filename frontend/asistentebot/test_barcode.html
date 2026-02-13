@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Barcode</title></head>
+<body>
+<h1>Test GraphQL Barcode</h1>
+<button onclick="testQuery()">Probar Query</button>
+<pre id="output"></pre>
+<script>
+async function testQuery() {
+  const query = `
+    query ListProducts($limit: Int) {
+      listProducts(limit: $limit) {
+        id
+        productName
+        barcode
+      }
+    }
+  `;
+  
+  const res = await fetch('http://localhost:8000/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, variables: { limit: 5 } })
+  });
+  
+  const data = await res.json();
+  document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+}
+</script>
+</body>
+</html>

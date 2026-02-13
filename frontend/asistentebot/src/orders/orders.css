@@ -1,0 +1,333 @@
+/* src/pages/Orders/Orders.css - RESPONSIVE PROFESIONAL */
+
+/* ============================================ */
+/* CONTENEDOR PRINCIPAL */
+/* ============================================ */
+.orders-container {
+  min-height: 100vh;
+  background-color: #fafafa;
+  padding-bottom: 100px;
+  width: 100%;
+}
+
+/* ============================================ */
+/* HEADER */
+/* ============================================ */
+.orders-header {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.orders-header-content {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+}
+
+.orders-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.orders-header p {
+  font-size: 14px;
+  color: #737373;
+  margin: 0;
+}
+
+.back-button {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: block;
+  padding: 12px 24px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: #f0f0f0;
+  border-color: #d4d4d4;
+}
+
+/* ============================================ */
+/* FILTROS */
+/* ============================================ */
+.filters-section {
+  padding: 0 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.filters-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 8px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filters-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  padding: 10px 20px;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  background: white;
+  color: #525252;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filter-chip:hover {
+  border-color: #d4d4d4;
+  background: #fafafa;
+}
+
+.filter-chip.active {
+  background: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+/* ============================================ */
+/* LISTA DE ÓRDENES */
+/* ============================================ */
+.orders-list {
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loading,
+.no-orders {
+  text-align: center;
+  padding: 60px 20px;
+  color: #737373;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.no-orders svg {
+  color: #d4d4d4;
+}
+
+.no-orders p {
+  margin: 0;
+}
+
+/* ============================================ */
+/* ORDER CARD */
+/* ============================================ */
+.order-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d4d4d4;
+}
+
+.order-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-number {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.order-number svg {
+  color: #737373;
+  flex-shrink: 0;
+}
+
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.order-date {
+  font-size: 14px;
+  color: #737373;
+}
+
+/* ============================================ */
+/* PREVIEW DE ITEMS */
+/* ============================================ */
+.order-items-preview {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item-preview-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  flex-shrink: 0;
+}
+
+.more-items {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #525252;
+  flex-shrink: 0;
+}
+
+/* ============================================ */
+/* FOOTER */
+/* ============================================ */
+.order-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.order-total {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.total-label {
+  font-size: 12px;
+  color: #737373;
+  font-weight: 500;
+}
+
+.total-amount {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+.chevron-icon {
+  color: #d4d4d4;
+  flex-shrink: 0;
+}
+
+/* ============================================ */
+/* RESPONSIVE - MÓVIL (< 600px) */
+/* ============================================ */
+@media (max-width: 600px) {
+  .orders-header {
+    padding: 16px;
+  }
+
+  .orders-header h1 {
+    font-size: 24px;
+  }
+
+  .filters-section,
+  .orders-list {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .order-card {
+    padding: 16px;
+  }
+
+  .order-number {
+    font-size: 15px;
+  }
+
+  .total-amount {
+    font-size: 22px;
+  }
+
+  .item-preview-image,
+  .more-items {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE - TABLET (601px - 1024px) */
+/* ============================================ */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .orders-header h1 {
+    font-size: 26px;
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE - DESKTOP (> 1024px) */
+/* ============================================ */
+@media (min-width: 1025px) {
+  .item-preview-image,
+  .more-items {
+    width: 70px;
+    height: 70px;
+  }
+}

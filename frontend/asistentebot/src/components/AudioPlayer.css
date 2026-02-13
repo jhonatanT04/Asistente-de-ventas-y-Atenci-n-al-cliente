@@ -1,0 +1,76 @@
+/* AudioPlayer.css */
+.audio-player {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 12px;
+}
+
+.audio-play-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: all 0.2s;
+  color: #4f46e5;
+}
+
+.audio-play-button:hover {
+  background: rgba(79, 70, 229, 0.2);
+  transform: scale(1.05);
+}
+
+.audio-play-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.audio-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+}
+
+.audio-wave {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.audio-text {
+  font-size: 11px;
+  font-style: italic;
+}
+
+.audio-player-loading,
+.audio-player-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #666;
+}
+
+.audio-error-text {
+  color: #999;
+}
+
+.audio-loading-icon,
+.audio-error-icon {
+  font-size: 14px;
+}

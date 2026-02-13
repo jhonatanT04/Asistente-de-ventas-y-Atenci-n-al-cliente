@@ -1,0 +1,79 @@
+1) Asistente de Gestión de Inventario (Agent + Planner)
+Objetivo: registrar producto desde foto(s)
+Plan (pipeline)
+    1. Capture Agent
+        ◦ foto 1: frontal etiqueta
+        ◦ foto 2: tabla nutricional / código
+        ◦ foto 3: lote/fechas (si aplica)
+    2. OCR + Vision Extractor Agent
+        ◦ OCR + parsing → campos normalizados
+        ◦ detecta: nombre, marca, presentación, peso/volumen, lote, exp/venc, precio base
+    3. Normalizer Agent
+        ◦ unidades: g/kg/ml/l
+        ◦ fechas: ISO + sanity checks
+        ◦ nombre canónico + dedupe (similitud)
+    4. DB Writer Agent
+        ◦ upsert producto + variantes + lotes
+        ◦ almacena imágenes (S3/minio) + metadata
+    5. Verifier Agent
+        ◦ confidence threshold
+        ◦ si faltan campos críticos → pregunta puntual al usuario
+Tools
+    • tool_ocr_extract(images[])
+    • tool_product_dedupe(name, brand, size)
+    • tool_inventory_upsert(payload)
+    • tool_store_images(images[])
+
+
+2) Asistente de Reconocimiento de Productos (multiagente ML + planners)
+Objetivo: clasificación multilabel + segmentación + servicio inferencia + training continuo
+Agentes
+    • Data Agent
+        ◦ adquisición + versionado dataset (DVC/MinIO)
+        ◦ split train/val/test
+    • EDA/Prep Agent
+        ◦ stats, clases desbalanceadas
+        ◦ augmentations/transformaciones registradas
+    • Training Agent
+        ◦ fine-tuning (e.g., YOLO/Mask R-CNN/SegFormer según caso)
+        ◦ log con MLflow (params, metrics, artifacts)
+    • Registry/Deploy Agent
+        ◦ registra “Model Version” + stage (Staging/Prod)
+        ◦ empaqueta en servicio (FastAPI/Triton)
+    • Inference Agent
+        ◦ predicción: imagen / batch / video
+        ◦ salida: labels + masks + bboxes + confidence
+    • Continuous Learning Agent
+        ◦ selecciona “hard examples” (baja confianza) → cola de etiquetado
+        ◦ reentrena incremental y registra nueva versión
+Plan (training)
+    1. ingest → 2) EDA → 3) train → 4) evaluate → 5) register → 6) promote
+Tools
+    • tool_mlflow_train(config, dataset_version)
+    • tool_mlflow_register(run_id, model_name)
+    • tool_mlflow_load(model_name, stage)
+    • tool_predict(image|video, model_ref)
+    • tool_active_learning_select(samples)
+3) Asistente de Atención al Cliente (LLM Agent + RAG + Tools)
+Objetivo: conversar + responder FAQ + consultar inventario + recomendar + registrar pedidos
+Capas
+    • Router/Planner
+        ◦ clasifica: FAQ | RAG | Tool-call (inventario, reconocimiento, recomendación, pedido)
+    • RAG Agent
+        ◦ chunks: políticas, horarios, envíos, devoluciones, catálogo, promos
+    • Order Agent
+        ◦ crea pedido, valida stock, confirma dirección/pago
+    • Recommendation Agent
+        ◦ reglas + embeddings: “similaridad + disponibilidad + margen”
+    • Verifier Agent
+        ◦ evita alucinación: “si no hay en inventario, no inventar”
+Tools (function calling)
+    • tool_product_recognition(image) → id(s) + confidence
+    • tool_inventory_query(filters) → stock, precio, caducidad, ubicación
+    • tool_recommend(products, user_profile, constraints)
+    • tool_order_create(cart, customer, delivery, payment)
+Flujo tipo
+    1. Usuario: “¿Tienen leche deslactosada?”
+    2. Planner: tool → inventario
+    3. Respuesta + opciones + upsell
+    4. Si “sí, quiero 2” → tool_order_create
