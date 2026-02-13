@@ -636,9 +636,11 @@ La implementación de este sistema en un entorno de producción se proyecta que:
 - Email: lamediatricolor@gmail.com
 - GitHub: [@FepDev25](https://github.com/FepDev25)
 
-**Samantha Suquilanda**
-
 **Jhonatan Tacuri**
+- Email: tacurijhonatan81@gmail.com
+- GitHub: [@FepDev25](https://github.com/jhonatanT04)
+
+**Samantha Suquilanda**
 
 **Justin Lucero**
 
